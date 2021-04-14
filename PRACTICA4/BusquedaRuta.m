@@ -21,7 +21,7 @@ for(i=[1:A])
   
   while(encontrado==1)
     while(columna=! 7])                         %  c=1               c=2 !!        
-          if(Matriz(j, ant) == 0) %1ª iteracion (j=1 ant=4)--> (j=2 ant=4) --> (j=2 ant=1) --> (j=1 ant=1) -->--> (j=2 ant=1)
+          if(Matriz(j, ant) == 0) %1ª iteracion (j=1 ant=4)--> (j=2 ant=4) --> (j=2 ant=1) --> (j=1 ant=1) --> (j=2 ant=1)
                     j = j+1; %(j=2) 
           else
                
