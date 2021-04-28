@@ -16,39 +16,55 @@ MatrizAux=Matriz;
 %Cada vez que terminemos un posible camino, K aumenta uno (Fila nueva)
 
 for(i=[1:A]) 
-  if (MatrizAux(i,7)=! 0)
-         Resultado(K,L)=A;%Introducimos el INICIO Resultado[K]=A;
-         L=L+1;
-         Resultado(K,L)=MatrizAux(i,A)%Introducimos ese valor en la posicion Resultado[K]=Matriz(j,ant);
+  if (MatrizAux(i,A)=! 0)
          ant=i;
          encontrado=1;
   end
-  %Primera iteracion i=4, j=1, ant=4
-  
-  
-  while(encontrado==1)
-    while(columna<=A])                         %  c=1               c=2 !!        
-          if(MatrizAux(j, ant) == 0) %1ª iteracion (j=1 ant=4)--> (j=2 ant=4) --> (j=2 ant=1) --> (j=1 ant=1) --> (j=2 ant=1)
-                    j = j+1; %(j=2) 
-          else
-                    Resultado(K,L)=MatrizAux(j,ant); %Introducimos el valor en la posicion Resultado(K)=Matriz(j,ant)
-                    L=L+1;
-                    MatrizAux(j,ant)=0;
-                    ant=j; %1ª iteracion (ant=2) --> (ant=1)
-                    j=1;
+ 
+ while (encontrado==1) % De aqui solo nos podemos salir si hemos terminado todas las combinaciones de la posicion inicial(74-76)
+           
+          while(columna<=A])   
+                    if(MatrizAux(j, ant) == 0)
+                              j = j+1; 
+                    else
+                     Tam=Tam+1;
+                     ant=j; 
+                     j=1; % Hasta aqui calculamos el tamaño de la columna a la que lleguamos
+                    end
           end
-          if(ant==1 && j==1)
-                    Columna=8;
-          end
-          
-          Columna=Columna+1; %C=2 - C=3 - C=4 - 
-          end
-    if(columna>7)
-              K=K+1;
-              encontrado=0;
-    end
-          
-      end
-  end
-                    
-                              
+   % Una vez sabemos cual es el tamaño de la columna a la que hemos llegado
+   %Tenemos que introducir tantas filas en la matriz resultados
+   %Como números de posibles destinos tenemos
+   ant=i;
+   
+   for(q=[1:Tam])
+             Resultado(K,1)=A;
+             K=K+1;
+   end
+   
+   %Aqui lo que tenemos es un array de una columna 5 filas todos los
+   %numeros de valor 7
+   K=1;
+          while(p<Tam])   
+               if(MatrizAux(j, ant) == 0)
+                              j = j+1; 
+               else %Aqui La primera vez L=K=1
+                 Resultado(K,L)=i; %Metemos el 7
+                 L=L+1; %Ya hemos metido el 7, ahora vamos a meter todos los numeros de la columna
+                 Resultado(K,L)=MatrizAux(j,ant); %Introducimos el valor en la posicion Resultado(K)=Matriz(j,ant)
+                 L=L+1;
+                 p=p+1;
+                 ant=j; %1ª iteracion (ant=2) --> (ant=1)
+                 j=1;
+               end
+   
+           
+           
+         
+           
+           
+           
+           
+           
+           
+ end
