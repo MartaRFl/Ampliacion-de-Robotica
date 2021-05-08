@@ -12,12 +12,12 @@ end
 [r,C]=size(P);
 examinados =MatrizInfinitos;
 MatrizInfinitos=sortrows(MatrizInfinitos,1);
-%Seguidamente los añadimos a la pila y la devolvemos ordenada por costes
+
 for(j=[1:r])
  if(P(j,2)<=MatrizInfinitos(P(j,1),2))
  
 examinados =ReorganizarMatriz(examinados,P(j,1),j,P(j,2),P(j,3));
  end
 end
-examinados =sortrows(examinados,2); %Ordenamos por coste
+examinados =sortrows(examinados,2);
 end

@@ -14,7 +14,6 @@ MatrizAux=Matriz;
 %Cada vez que introduzcamos un numero en Resultado, L (la columna) debe
 %avanzar
 %Cada vez que terminemos un posible camino, K aumenta uno (Fila nueva)
-
 for(i=[1:A]) 
   if (MatrizAux(i,A)=! 0)
          ant=i;
@@ -56,15 +55,5 @@ for(i=[1:A])
                  p=p+1;
                  ant=j; %1ª iteracion (ant=2) --> (ant=1)
                  j=1;
-               end
-   
-           
-           
-         
-           
-           
-           
-           
-           
-           
+               end      
  end

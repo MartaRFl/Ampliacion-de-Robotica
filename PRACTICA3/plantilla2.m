@@ -1,7 +1,7 @@
 %% Configuraci�n inicial
 factorescala=1;
-mapa=imread('mapa1_hr_laplaciana150.png'); % Mapa de obst�culos
-mapa_show=imread('mapa1_150.png');         % Mapa para mostrar en pantalla
+mapa=imread('mapa1.png'); % Mapa de obst�culos
+mapa_show=imread('mapa1.png');         % Mapa para mostrar en pantalla
 mapa=imresize(mapa,factorescala);
 mapa=imbinarize(mapa)*255;
 i = [137 15];                  % Coordenadas de inicio

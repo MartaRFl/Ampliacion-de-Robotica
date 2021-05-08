@@ -1,26 +1,21 @@
-function [ RutaOptimizada ] = OptimizarRuta( Ruta,origen,destino )
-%OptimizarRuta genera la ruta óptima con menor coste
+function [RutaOptimizada] = OptimizarRuta(Ruta,origen,destino)
 [f,c]=size(Ruta);
 i=Ruta(f,3);
-%Almacenamos el valor del destino en RutaOptimizada para que no esté vacío.
 RutaOptimizada=Ruta(f,:);
-[last,c]=size(RutaOptimizada);
-%Iremos llenando RutaOptimizada hasta que hayamos llegado al punto de
-%partida desde el destino, obteniendo el camino óptimo.
-while(RutaOptimizada(last,1)~=origen)
- 
- %Tenemos que encontrar la fila que contiene el valor i que es el
- %objetivo
+[ultima,c]=size(RutaOptimizada);
+
+while(RutaOptimizada(ultima,1)~=origen)
+
  for(j=[1:f])
  if(Ruta(j,1)==i)
- hilera=j;
+ columna=j;
  end
  end
- RutaOptimizada=[RutaOptimizada;Ruta(hilera,:)];
+ RutaOptimizada=[RutaOptimizada;Ruta(columna,:)];
  
  [f,c]=size(Ruta);
- [last,c]=size(RutaOptimizada);
- i=Ruta(hilera,3);
+ [ultima,c]=size(RutaOptimizada);
+ i=Ruta(columna,3);
 end
 RutaOptimizada=sortrows(RutaOptimizada,2);
 end
