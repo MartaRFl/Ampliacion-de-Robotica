@@ -1,0 +1,90 @@
+function [coste,ruta] = aestrella(G,H,I,F)
+if I == F
+ coste = 0;
+ ruta = I;
+else
+ nnodos = length(G);
+
+ 
+ pila = zeros (nnodos,4);
+ pila(:,1) = 1:nnodos;
+ pila(:,2) = inf;
+ pila(I,2) = 0; % Se pone a 0 el coste del origen
+ pila(:,3) = inf;
+ pila(I,3) = 0; % Se pone a 0 el coste del origen
+ 
+ pila(:,4) = 1:nnodos;
+ 
+ % Se ordena la pila según el coste
+ costG = pila(:,2);
+ costH = pila(:,3);
+ padre = pila(:,4);
+ pila = sortrows(pila,2);
+ 
+ pila_desc = [];
+
+ while pila(1,1) ~= F
+ 
+
+ costesG = G(pila(1,1),:);
+ costeGn = pila(1,2); 
+ costeHn = Hest(F,:)'; 
+ 
+
+ 
+ nodos = costesG' ~= 0 & costG > (costesG' + costeGn);
+ 
+
+ padre(nodos) = pila(1,1); 
+ 
+ costG(nodos) = costesG(nodos)' + costeGn;
+ costH(nodos) = costesG(nodos)' + costeHn(nodos) + costeGn;
+ 
+
+ pila_desc = [pila_desc;pila(1,:)];
+ 
+
+ pila(1,:) = [];
+ pila = sortrows(pila,1);
+ 
+
+ pos1 = ismember((1:nnodos)', pila(:,1));
+ pila(:,2:4) = [costG(pos1), costH(pos1), padre(pos1)];
+ 
+ 
+
+ pila = sortrows(pila,3);
+ end
+ 
+
+
+ pila_desc = [pila_desc;pila(1,:)];
+ 
+
+ ind = find(sum(pila_desc,2)==0) ;
+ pila_desc(ind,:) = [] ;
+ 
+
+ tam_pila = size(pila_desc);
+ coste = pila_desc(tam_pila(1),2);
+ 
+ ruta = zeros(1,tam_pila(1)); 
+ ruta (1) = I;
+ 
+
+ unodo = pila(1,1); 
+ i = tam_pila(1);
+ 
+
+ while unodo ~= I
+ ruta(i) = unodo
+ unodo = pila_desc(find(pila_desc(:,1) == unodo),4);
+ i = i - 1;
+ end
+ 
+ ruta = ruta(ruta~=0);
+end
+end
+
+
+ 
