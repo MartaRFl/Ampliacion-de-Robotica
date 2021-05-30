@@ -14,14 +14,6 @@ T=10;
 [pa, qa]=qpinter(P1, P2, 0) %llama a la funcion de taylor
 [pb, qb]=qpinter(P1, P2, 1)
 
-q1 = tr2q(P1(1:3,1:3)); %Convertimos a cuaternio de la matriz homogenea
-q2 = tr2q(P2(1:3,1:3));
-
-v1 = round(qa,8) == round(q1,8) %Redondeamos
-v2 = round(qb,8) == round(q2,8)
-
-
-
 %% Apartado 2
 
 % Cargar modelo robot ABB IRB120
